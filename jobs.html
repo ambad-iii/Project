@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Jobs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>College Placement Portal</h1>
+        <div class="navbar-right">
+            <span>Welcome, {{ student.name }}</span>
+            <button onclick="location.href='/login.html'">Logout</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li onclick="location.href='/dashboard'">Dashboard</li>
+                <li onclick="location.href='/profile'">Profile</li>
+                <li class="active" onclick="location.href='/jobs'">Browse Jobs</li>
+                <li onclick="location.href='/login'">Logout</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="welcome">
+                <h2>Browse Jobs</h2>
+                <p>Find and apply for available placement opportunities.</p>
+            </div>
+            <div class="job-search">
+                <input type="text" id="searchInput" placeholder="Search by company or role">
+                <button>Search</button>
+            </div>
+            <div class="job-listings">
+                {% for job in jobs %}
+                <div class="job-card">
+                    <h3 onclick="location.href='/job-details/{{job.company}}'" style="cursor:pointer;">
+                        {{job.company}}
+                    </h3>
+                    <p><b>Role:</b> {{ job.role }}</p>
+                    <p><b>Location:</b> {{ job.location }}</p>
+                    <p><b>Package:</b> {{ job.package }}</p>
+                    <p><b>Eligibility:</b> {{ job.eligibility }}</p>
+                    {% if job.company in applications %}
+                    <button type="button" class="apply-btn" disabled>Applied</button>
+                    {% else %}
+                    <form action="/apply/{{ job.company }}" method="POST">
+                        <button type="submit" class="apply-btn">Apply</button>
+                    </form>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='javascript.js') }}"></script>
+</body>
+</html>
