@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #272294, #025d6d);
+        }
+        .register h2{
+            text-align: center;
+        }
+
+        .register {
+            width: 380px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .content{
+            margin-bottom: 18px;
+
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+         .Register{
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            
+            transition: 0.3s;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="register">
+        <h2>Register</h2>
+    <form id="register">
+        <div class="content">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="content">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Email">
+        </div>
+
+        <div class="content">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Password">
+        </div>
+
+        <div class="content">
+            <label>Confirm Password</label>
+            <input type="password" id="confirm" placeholder="Confirm Password">
+        </div>
+
+        <button type="submit" id="btn" class="Register">Register</button>
+
+    </form>
+</div>
+
+<script>
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirm').value;
+
+    if (password === confirm) {
+        window.location.href = 'Login.html';
+    } else {
+        alert('Check Your Password');
+    }
+});
+</script>
+
+</body>
+</html>
