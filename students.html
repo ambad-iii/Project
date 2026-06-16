@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='1.css')}}">
+
+</head>
+<body>
+  <div class="sidebar">
+
+    <h2>Admin Panel</h2>
+
+    <a href="/dashboard">Dashboard</a>
+    <a href="/students">Students</a>
+    <a href="/recruiters">Recruiters</a>
+    <a href="/analytics">Analytics</a>
+    <a href="/reports">Reports</a>
+
+</div>
+
+<div class="content">
+
+    <h1>Student Management</h1>
+
+    <table>
+
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>CGPA</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>21CS001</td>
+            <td>Maria</td>
+            <td>CSE</td>
+            <td>8.9</td>
+            <td>Placed</td>
+        </tr>
+
+        <tr>
+            <td>21EC010</td>
+            <td>Mia</td>
+            <td>ECE</td>
+            <td>8.5</td>
+            <td>Interview Scheduled</td>
+        </tr>
+
+        <tr>
+            <td>21ME015</td>
+            <td>Dia</td>
+            <td>ME</td>
+            <td>8.0</td>
+            <td>Applied</td>
+        </tr>
+
+        <tr>
+            <td>21EE022</td>
+            <td>John</td>
+            <td>EEE</td>
+            <td>8.2</td>
+            <td>Shortlisted</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

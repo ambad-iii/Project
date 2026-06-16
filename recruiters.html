@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='1.css')}}">
+
+</head>
+<body>
+   <div class="sidebar">
+
+    <h2>Admin Panel</h2>
+
+    <a href="/dashboard">Dashboard</a>
+    <a href="/students">Students</a>
+    <a href="/recruiters">Recruiters</a>
+    <a href="/analytics">Analytics</a>
+    <a href="/reports">Reports</a>
+
+</div>
+
+<div class="content">
+
+    <h1>Recruiter Management</h1>
+
+    <table>
+
+        <tr>
+            <th>Company</th>
+            <th>Industry</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        <tr>
+            <td>TCS</td>
+            <td>IT Services</td>
+            <td id="status1">Pending</td>
+            <td>
+                <button onclick="approve('status1')">Approve</button>
+                <button onclick="suspend('status1')">Suspend</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Infosys</td>
+            <td>Technology</td>
+            <td id="status2">Pending</td>
+            <td>
+                <button onclick="approve('status2')">Approve</button>
+                <button onclick="suspend('status2')">Suspend</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Accenture</td>
+            <td>Consulting</td>
+            <td id="status3">Pending</td>
+            <td>
+                <button onclick="approve('status3')">Approve</button>
+                <button onclick="suspend('status3')">Suspend</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Wipro</td>
+            <td>Software</td>
+            <td id="status4">Pending</td>
+            <td>
+                <button onclick="approve('status4')">Approve</button>
+                <button onclick="suspend('status4')">Suspend</button>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+<script src="{{url_for('static',filename='script.js')}}"></script>
+</body>
+</html>

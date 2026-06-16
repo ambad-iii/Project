@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='1.css')}}">
+
+</head>
+<body>
+<div class="sidebar">
+
+    <h2>Admin Panel</h2>
+
+    <a href="/dashboard">Dashboard</a>
+    <a href="/students">Students</a>
+    <a href="/recruiters">Recruiters</a>
+    <a href="/analytics">Analytics</a>
+    <a href="/reports">Reports</a>
+
+</div>
+
+<div class="content">
+
+    <h1>Placement Analytics</h1>
+
+    <div class="analytics-box">
+        <h3>Department-wise Placement Rate</h3>
+
+        <p>CSE : 92%</p>
+        <p>ECE : 85%</p>
+        <p>EEE : 80%</p>
+        <p>ME : 68%</p>
+    </div>
+
+    <div class="analytics-box">
+        <h3>Recruitment Funnel</h3>
+
+        <p>Applied : 1260</p>
+        <p>Reviewed : 980</p>
+        <p>Shortlisted : 540</p>
+        <p>Selected : 216</p>
+    </div>
+
+    <div class="analytics-box">
+        <h3>Top Recruiters</h3>
+
+        <p>TCS - 54 Hires</p>
+        <p>Infosys - 41 Hires</p>
+        <p>Accenture - 33 Hires</p>
+    </div>
+
+</div>
+</body>
+</html>
