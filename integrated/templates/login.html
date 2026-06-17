@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Role Login</title>
+    <style>
+        
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+        }
+        .mainheading h2{
+            text-align: center;
+        }
+
+        .mainheading {
+            width: 380px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .content {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #3730a3;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+
+</head>
+<body>
+<div class="mainheading">
+    <h2>Login Portal</h2>
+
+    <form id="login" action="/login" method="POST">
+        <div class="content">
+            <label>Select Role</label>
+            <select id="role" name="role" required>
+                <option value="">Choose Role</option>
+                <option value="Student">Student</option>
+                <option value="Recruiter">Recruiter</option>
+                <option value="Admin">Admin</option>
+            </select>
+        </div>
+
+        <div class="content">
+            <label>Email / Username</label>
+            <input type="text" id="email" name="email" placeholder="Enter email or username" required>
+        </div>
+        <div class="content">
+            <label>Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>        
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <div class="register">
+        <a href="Register.html">Register Now</a>
+    </div>
+</div>
+</body>
+</html>
