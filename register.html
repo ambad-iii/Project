@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+
+<style>
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+}
+
+/* CARD */
+.register {
+    width: 380px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.content {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4f46e5;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3730a3;
+}
+
+/* ERROR */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="register">
+    <h2>Register</h2>
+
+    <div id="error" class="error"></div>
+
+    <form id="registerForm">
+
+        <div class="content">
+            <label>Role</label>
+            <select id="role">
+                <option value="">Choose Role</option>
+                <option>Student</option>
+                <option>Recruiter</option>
+                <option>Admin</option>
+            </select>
+        </div>
+
+        <div class="content">
+            <label>Username</label>
+            <input type="text" id="name" placeholder="Username">
+        </div>
+
+        <div class="content">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Email">
+        </div>
+
+        <div class="content">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Password">
+        </div>
+
+        <div class="content">
+            <label>Confirm Password</label>
+            <input type="password" id="confirm" placeholder="Confirm Password">
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+const form = document.getElementById("registerForm");
+const error = document.getElementById("error");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const role = document.getElementById("role").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirm").value;
+
+    // Clear old error
+    error.innerText = "";
+
+    if (!role || !name || !email || !password || !confirm) {
+        error.innerText = "Please fill all fields";
+        return;
+    }
+
+    if (password !== confirm) {
+        error.innerText = "Passwords do not match";
+        return;
+    }
+
+    // Save data (temporary)
+    const user = { role, name, email, password };
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // Redirect
+    window.location.href = "Login.html";
+});
+</script>
+
+</body>
+</html>
