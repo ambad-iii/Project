@@ -8,73 +8,86 @@
 
 </head>
 <body>
-   <div class="sidebar">
+    <div class="navbar">
+    <h1>Admin Dashboard</h1>
 
-    <h2>Admin Panel</h2>
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
 
-    <a href="/admin_dashboard">Dashboard</a>
-    <a href="/admin_students">Students</a>
-    <a href="/admin_recruiters">Recruiters</a>
-    <a href="/admin_analytics">Analytics</a>
-    <a href="/admin_reports">Reports</a>
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/admin_dashboard">Dashboard</a></li>
+                <li><a href="/admin_students">Students</a></li>
+                <li><a href="/admin_recruiters">Recruiters</a></li>
+                <li><a href="/admin_analytics">Analytics</a></li>
+                <li class="active"><a href="/admin_reports">Reports</a></li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
 
-</div>
+        </div>
 
-<div class="content">
+        <div class="content">
 
-    <h1>Placement Reports</h1>
+            <h1>Placement Reports</h1>
 
-    <table>
+            <table>
 
-        <tr>
-            <th>Metric</th>
-            <th>Value</th>
-        </tr>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
 
-        <tr>
-            <td>Total Students</td>
-            <td>542</td>
-        </tr>
+                <tr>
+                    <td>Total Students</td>
+                    <td>542</td>
+                </tr>
 
-        <tr>
-            <td>Total Recruiters</td>
-            <td>32</td>
-        </tr>
+                <tr>
+                    <td>Total Recruiters</td>
+                    <td>32</td>
+                </tr>
 
-        <tr>
-            <td>Total Jobs Posted</td>
-            <td>78</td>
-        </tr>
+                <tr>
+                    <td>Total Jobs Posted</td>
+                    <td>78</td>
+                </tr>
 
-        <tr>
-            <td>Total Applications</td>
-            <td>1260</td>
-        </tr>
+                <tr>
+                    <td>Total Applications</td>
+                    <td>1260</td>
+                </tr>
 
-        <tr>
-            <td>Total Placements</td>
-            <td>216</td>
-        </tr>
+                <tr>
+                    <td>Total Placements</td>
+                    <td>216</td>
+                </tr>
 
-        <tr>
-            <td>Placement Rate</td>
-            <td>39.8%</td>
-        </tr>
+                <tr>
+                    <td>Placement Rate</td>
+                    <td>39.8%</td>
+                </tr>
 
-        <tr>
-            <td>Top Recruiter</td>
-            <td>TCS</td>
-        </tr>
+                <tr>
+                    <td>Top Recruiter</td>
+                    <td>TCS</td>
+                </tr>
 
-    </table>
+            </table>
 
-    <br>
+            <br>
 
-    <button onclick="generateReport()">
-        Generate Report
-    </button>
+            <button onclick="generateReport()">
+                Generate Report
+            </button>
 
-</div>
+        </div>
+    </div>
 
 <script src="{{url_for('static',filename='admin_javascript.js')}}"></script>
 
