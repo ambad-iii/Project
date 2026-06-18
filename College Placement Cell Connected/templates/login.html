@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<style>
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+}
+
+.main {
+    width: 380px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    background: #3730a3;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+.link{
+    text-align: center;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="main">
+    <h2>Login</h2>
+
+    <div id="error" class="error"></div>
+
+    <form method="POST" action="/login" id="loginForm">
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <div class="content">
+            <label>Role</label>
+            <select id="role" name="role" required>
+                <option value="">Choose Role</option>
+                <option value="Student">Student</option>
+                <option value="Recruiter">Recruiter</option>
+                <option value="Admin">Admin</option>
+            </select>
+        </div>
+
+        <div class="content" id="nameField">
+            <label>Name</label>
+            <input type="text" id="login_name" name="login_name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="content">
+            <label>Email / Username</label>
+            <input type="text" id="email" name="login_email" placeholder="Enter email or username" required>
+        </div>
+
+        <div class="content">
+            <label>Password</label>
+            <input type="password" id="password" name="login_password" placeholder="Enter Password" required>
+        </div>
+
+        <button type="submit">Login</button>
+        <div class="link">
+            <a name="link" href="/register">Register Now</a>
+        </div>
+    </form>
+</div>
+
+<script>
+const roleSelect = document.getElementById('role');
+const nameField = document.getElementById('nameField');
+const nameInput = document.getElementById('login_name');
+
+function updateNameField() {
+    if (roleSelect.value === 'Admin') {
+        nameField.style.display = 'none';
+        nameInput.required = false;
+        nameInput.value = '';
+    } else {
+        nameField.style.display = 'block';
+        nameInput.required = true;
+    }
+}
+
+roleSelect.addEventListener('change', updateNameField);
+updateNameField();
+</script>
+
+</body>
+</html>
