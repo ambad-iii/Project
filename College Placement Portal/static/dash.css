@@ -7,20 +7,21 @@
 
 /* BODY */
 body{
-    background-color: #f5f7fb;
-    color: #2d3436;
+    background-color: #f1f5f9;
+    color: #0f172a;
 }
 
 /* NAVBAR */
 .navbar{
     height: 75px;
-    background-color: #0f172a;
     color: white;
+    font-size: large;
+    font-weight: 500;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    text-align: right;
+    background: linear-gradient(90deg, #0f172a, #1e3a8a, #2563eb);
 }
 
 .navbar-right{
@@ -30,14 +31,18 @@ body{
     margin-left: auto;
 }
 
-
 button{
-    padding: 10px 18px;
+    padding: 10px 16px;
     border: none;
     border-radius: 6px;
     background-color: #2563eb;
     color: white;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: #1d4ed8;
 }
 
 /* CONTAINER */
@@ -49,8 +54,9 @@ button{
 .sidebar{
     width: 240px;
     min-height: 100vh;
-    background-color: #111827;
     padding: 25px 18px;
+    background: linear-gradient(180deg,#0f172a,#1e3a8a,#2563eb
+    );
 }
 
 .sidebar ul{
@@ -66,8 +72,8 @@ button{
 }
 
 .sidebar ul li:hover{
-    background-color: #1f2937;
-    color: white;
+    background-color: #e9edf7;
+    color: #0f172a;
 }
 
 .sidebar ul li.active{
@@ -134,32 +140,32 @@ button{
 
 
 .section{
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: white;
+    padding: 25px;
     margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 table{
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 table th{
-    background: #111827;
+    background-color: #162a62;
     color: white;
-    padding: 12px;
+    padding: 14px;
 }
 
 table td{
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 table tr:hover{
-    background: #f3f4f6;
+    background-color: #f9fafb;
 }
 
 /* STATUS */
