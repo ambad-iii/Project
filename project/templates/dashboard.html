@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recruiter Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Recruiter Dashboard</h2>
+    <div class="navbar-right">
+        <span>Welcome, Recruiter</span>
+        <button onclick="confirmLogout()" class="log-out">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul>
+            <li class="active"><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/post_job">Post Job</a></li>
+            <li><a href="/applicants">Applicants</a></li>
+            <li onclick="confirmLogout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="section">
+        <h2>Welcome Back</h2>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <h2>Quick Summary</h2><br>
+        <div class="summary-cards">
+            <div class="card">
+                <p>Total Jobs Posted</p>
+                <h3>{{ jobs|length }}</h3>
+            </div>
+
+            <div class="card">
+                <p>Total Applicants</p>
+                <h3>{{ applications|length }}</h3>
+            </div>
+
+            <div class="card">
+                <p>Shortlisted Candidates</p>
+                <h3>{{ shortlisted|length }}</h3>
+            </div>
+
+            <div class="card">
+                <p>Selected Candidates</p>
+                <h3>{{ selected|length }}</h3>
+            </div>
+        </div>
+
+        <!-- RECENT JOBS -->
+        <div class="section">
+            <h3>Recent Job Posts</h3>
+
+            <table>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Location</th>
+                </tr>
+
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ job.company }}</td>
+                    <td>{{ job.role }}</td>
+                    <td>{{ job.location }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- RECENT APPLICATIONS -->
+        <div class="section">
+            <h3>Recent Applications</h3>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Job Role</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for app in applications %}
+                <tr>
+                    <td>{{ app.student_email }}</td>
+                    <td>{{ app.role }}</td>
+                    <td>Pending</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+<script src="{{ url_for('static', filename='javascript.js') }}"></script>
+</body>
+</html>

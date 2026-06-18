@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_style.css') }}">
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Admin Dashboard</h1>
+
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
+
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="sidebar">
+            <ul>
+                <li class="active"><a href="/admin_dashboard">Dashboard</a></li>
+                <li><a href="/admin_students">Students</a></li>
+                <li><a href="/admin_recruiters">Recruiters</a></li>
+                <li><a href="/admin_analytics">Analytics</a></li>
+                <li><a href="/admin_reports">Reports</a></li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
+        </div>
+
+    <div class="content">
+
+        <div class="section">
+         <h1>Welcome Back</h1>
+        </div>
+
+        <div class="summary-cards">
+
+            <div class="card">
+            <h2>Total Students</h2>
+            <p>{{ students|length }}</p>
+            </div>
+
+            <div class="card">
+            <h2>Total Recruiters</h2>
+            <p>{{ recruiters|length }}</p>
+            </div>
+
+            <div class="card">
+            <h2>Jobs Posted</h2>
+            <p>{{ jobs|length }}</p>
+            </div>
+
+            <div class="card">
+            <h2>Applications</h2>
+            <p>{{ applications|length }}</p>
+            </div>
+
+        </div>
+
+    </div>
+<script src="{{ url_for('static', filename='admin_javascript.js') }}"></script>
+</body>
+</html>
