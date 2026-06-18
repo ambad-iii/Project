@@ -1,0 +1,166 @@
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    display:flex;
+    background:#f4f6f9;
+}
+
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#0b1320;
+    color:white;
+    padding:20px;
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin:10px 0;
+    border-radius:5px;
+}
+
+.sidebar a:hover{
+    background:#1e293b;
+}
+
+.content{
+    margin-left:290px;
+    padding:30px;
+    width:100%;
+}
+
+.content h1{
+    color:#1e3a8a;
+    margin-bottom:20px;
+}
+
+
+.card{
+    background:white;
+    padding:20px;
+    margin:20px 0;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    text-align:center;
+    width:900px;
+}
+
+.card h2{
+    color:#0c2458;
+}
+
+.card p{
+    font-size:30px;
+    font-weight:bold;
+}
+
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    margin-top:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+th{
+    background:#0b1320;
+    color:white;
+    padding:12px;
+}
+
+td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+tr:hover{
+    background:#f1f5f9;
+}
+
+/* Buttons */
+
+button{
+    background:#1e293b;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+    margin:2px;
+}
+
+button:hover{
+    background:#05133a;
+}
+
+
+.analytics-box{
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.analytics-box h3{
+    color:#0a2155;
+}
+
+.analytics-box p{
+    font-size:18px;
+    margin:8px 0;
+}
+
+
+.report-box{
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.login-box{
+    width:350px;
+    margin:100px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.login-box input{
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.login-box button{
+    width:95%;
+    padding:10px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.login-box button:hover{
+    background:#0e2565;
+}
