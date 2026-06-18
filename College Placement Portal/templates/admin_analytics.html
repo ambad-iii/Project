@@ -8,48 +8,64 @@
 
 </head>
 <body>
-<div class="sidebar">
+    <div class="navbar">
+    <h1>Admin Dashboard</h1>
 
-    <h2>Admin Panel</h2>
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
 
-    <a href="/admin_dashboard">Dashboard</a>
-    <a href="/admin_students">Students</a>
-    <a href="/admin_recruiters">Recruiters</a>
-    <a href="/admin_analytics">Analytics</a>
-    <a href="/admin_reports">Reports</a>
-
-</div>
-
-<div class="content">
-
-    <h1>Placement Analytics</h1>
-
-    <div class="analytics-box">
-        <h3>Department-wise Placement Rate</h3>
-
-        <p>CSE : 92%</p>
-        <p>ECE : 85%</p>
-        <p>EEE : 80%</p>
-        <p>ME : 68%</p>
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
     </div>
 
-    <div class="analytics-box">
-        <h3>Recruitment Funnel</h3>
+    <div class="container">
+        <div class="container">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="/admin_dashboard">Dashboard</a></li>
+                    <li><a href="/admin_students">Students</a></li>
+                    <li><a href="/admin_recruiters">Recruiters</a></li>
+                    <li class="active"><a href="/admin_analytics">Analytics</a></li>
+                    <li><a href="/admin_reports">Reports</a></li>
+                    <li onclick="confirmLogout()">Logout</li>
+                </ul>
 
-        <p>Applied : 1260</p>
-        <p>Reviewed : 980</p>
-        <p>Shortlisted : 540</p>
-        <p>Selected : 216</p>
+            </div>
+
+            <div class="content">
+
+                <h1>Placement Analytics</h1>
+
+                    <div class="analytics-box">
+                        <h3>Department-wise Placement Rate</h3>
+
+                        <p>CSE : 92%</p>
+                        <p>ECE : 85%</p>
+                        <p>EEE : 80%</p>
+                        <p>ME : 68%</p>
+                    </div>
+
+                    <div class="analytics-box">
+                        <h3>Recruitment Funnel</h3>
+
+                        <p>Applied : 1260</p>
+                        <p>Reviewed : 980</p>
+                        <p>Shortlisted : 540</p>
+                        <p>Selected : 216</p>
+                    </div>
+
+                    <div class="analytics-box">
+                        <h3>Top Recruiters</h3>
+
+                        <p>TCS - 54 Hires</p>
+                        <p>Infosys - 41 Hires</p>
+                        <p>Accenture - 33 Hires</p>
+                    </div>
+
+            </div>
+        </div>
     </div>
-
-    <div class="analytics-box">
-        <h3>Top Recruiters</h3>
-
-        <p>TCS - 54 Hires</p>
-        <p>Infosys - 41 Hires</p>
-        <p>Accenture - 33 Hires</p>
-    </div>
-
-</div>
 </body>
 </html>
