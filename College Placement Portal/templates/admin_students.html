@@ -8,42 +8,55 @@
 
 </head>
 <body>
-  <div class="sidebar">
+    <div class="navbar">
+    <h1>Admin Dashboard</h1>
 
-    <h2>Admin Panel</h2>
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
 
-    <a href="/admin_dashboard">Dashboard</a>
-    <a href="/admin_students">Students</a>
-    <a href="/admin_recruiters">Recruiters</a>
-    <a href="/admin_analytics">Analytics</a>
-    <a href="/admin_reports">Reports</a>
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/admin_dashboard">Dashboard</a></li>
+                <li class="active"><a href="/admin_students">Students</a></li>
+                <li><a href="/admin_recruiters">Recruiters</a></li>
+                <li><a href="/admin_analytics">Analytics</a></li>
+                <li><a href="/admin_reports">Reports</a></li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
 
-</div>
+        </div>
 
-<div class="content">
+        <div class="content">
 
-    <h1>Student Management</h1>
+            <h1>Student Management</h1>
 
-    <table>
-        <tr>
-            <th>Roll NO</th>
-            <th>NAME</th>
-            <th>DEPARTEMNT</th>
-            <th>CGPA</th>
-            <th>STATUS</th>
-        </tr>
-        {% for student in students %}
-        <tr>
-            <td>{{ student.roll_no }}</td>
-            <td>{{ student.name }}</td>
-            <td>{{ student.department }}</td>
-            <td>{{ student.cgpa }}</td>
-            <td>{{ student.status }}</td>
-         </tr>
-        {% endfor %}
-    </table>
+            <table>
+                <tr>
+                    <th>Roll NO</th>
+                    <th>NAME</th>
+                    <th>DEPARTEMNT</th>
+                    <th>CGPA</th>
+                    <th>STATUS</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.roll_no }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.department }}</td>
+                    <td>{{ student.cgpa }}</td>
+                    <td>{{ student.status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
 
-</div>
+        </div>
+    </div>
 
 </body>
 </html>
