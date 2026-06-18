@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='std_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>College Placement Portal</h1>
+        <div class="navbar-right">
+            <span>Welcome, {{ student.name }}</span>
+            <button onclick="confirmLogout()" class="log-out">Logout</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li onclick="location.href='/std_dashboard'">Dashboard</li>
+                <li class="active" onclick="location.href='/std_profile'">Profile</li>
+                <li onclick="location.href='/std_jobs'">Browse Jobs</li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="welcome">
+                <h2>My Profile</h2>
+                <p>Manage your personal details, applications, interviews, and resume</p>
+            </div>
+            <div class="tab-buttons">
+                <button class="tab active" data-tab="personal">Personal Details</button>
+                <button class="tab" data-tab="applications">Applications</button>
+                <button class="tab" data-tab="interviews">Interviews</button>
+                <button class="tab" data-tab="resume">Resume</button>
+            </div>
+            <div class="tab-section active" id="personal">
+                <div class="personal-details">
+                    <h2>Personal Details</h2>
+                    <p><b>Name:</b> <span>{{ student.name }}</span></p>
+                    <p><b>Email:</b> <span>{{ student.email }}</span></p>
+                    <p><b>Course:</b> <span>{{ student.course }}</span></p>
+                    <p><b>Year:</b> <span>{{ student.year }}</span></p>
+                    <button id="editBtn">Edit Profile</button>
+                    <form action="/update-profile" method="POST" class="edit-form" id="editForm">
+                        <input type="text" name="name" value="{{ student.name }}">
+                        <input type="email" name="email" value="{{ student.email }}">
+                        <input type="text" name="course" value="{{ student.course }}">
+                        <input type="text" name="year" value="{{ student.year }}">
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab-section" id="applications">
+                <div class="application-status">
+                    <h2>Application Status</h2>
+                    <ul>
+                        {% if applications %}
+                            {% for app in applications %}
+                            <li>
+                                {{ app.company }} - Applied
+                                <form action="/remove-application/{{ app.id }}" method="POST" style="display:inline;">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No applications yet</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-section" id="interviews">
+                <div class="interview-tracking">
+                    <h2>Interview Tracking</h2>
+                    <ul>
+                        <li>Infosys - 11 June 2026 - 10:00 AM</li>
+                        <li>TCS - Not Scheduled Yet</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-section" id="resume">
+                <div class="resume-upload">
+                    <h2>Resume</h2>
+                    <form action="/upload-resume" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="resume"><br><br>
+                        <button type="submit">Upload Resume</button>
+                    </form><br>
+                    {% if resume_filename %}
+                        <p>Uploaded Resume: <a href="{{ url_for('uploaded_file', filename=resume_filename) }}" target="_blank" download>{{ resume_filename }}</a></p>
+                    {% else %}
+                        <p>No resume uploaded</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='std_javascript.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='std_style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>College Placement Portal</h1>
+        <div class="navbar-right">
+            <span>Welcome, {{ student.name }}</span>
+            <button onclick="confirmLogout()" class="log-out">Logout</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li class="active" onclick="location.href='/std_dashboard'">Dashboard</li>
+                <li onclick="location.href='/std_profile'">Profile</li>
+                <li onclick="location.href='/std_jobs'">Browse Jobs</li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="welcome">
+                <h2>Welcome Back, {{ student.name }}</h2>
+                <p>Check your latest placement activities here.</p>
+            </div>
+            <div class="quick-summary">
+                <h2>Quick Summary</h2>
+                <div class="summary-cards">
+                    <div class="card">
+                        <p>Applied Jobs</p>
+                        <h3>{{ applications|length }}</h3>
+                    </div>
+                    <div class="card">
+                        <p>Available Jobs</p>
+                        <h3>{{ jobs|length }}</h3>
+                    </div>
+                    <div class="card">
+                        <p>Upcoming Interviews</p>
+                        <h3>3</h3>
+                    </div>
+                    <div class="card">
+                        <p>Resume Status</p>
+                        <h3>
+                            {% if resume_filename %}
+                                Uploaded
+                            {% else %}
+                                Not Uploaded
+                            {% endif %}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="job-openings">
+                <h2>Recent Job Openings</h2>
+                <table>
+                    <tr>
+                        <th>Company</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{ job.company }}</td>
+                        <td>{{ job.role }}</td>
+                        <td>
+                            {% set applied = job.id in applications %}
+                            {% if applied %}
+                            <button type="button" class="apply-btn" disabled>Applied</button>
+                            {% else %}
+                            <form action="/apply/{{ job.id }}" method="POST">
+                                <button type="submit" class="apply-btn">Apply</button>
+                            </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='std_javascript.js') }}"></script>
+</body>
+</html>

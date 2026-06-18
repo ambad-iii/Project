@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recruiter Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Recruiter Dashboard</h2>
+
+    <div class="navbar-right">
+        <span>Welcome, Recruiter</span>
+        <button onclick="confirmLogout()" class="log-out">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li class="active"><a href="/profile">Profile</a></li>
+            <li><a href="/post_job">Post Job</a></li>
+            <li><a href="/applicants">Applicants</a></li>
+            <li onclick="confirmLogout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <div class="section profile-card">
+
+            <div class="profile-header">
+                <img src="{{ url_for('uploaded_file', filename=recruiter.photo_path) if recruiter.photo_path else url_for('static', filename='company.jpg') }}" alt="Company Profile" class="profile-photo">
+
+                <div>
+                    <h2>{{ recruiter.company_name or 'ABC Technologies Pvt Ltd' }}</h2>
+                    <p>{{ recruiter.description or 'Software Development Company' }}</p>
+                </div>
+
+                <button class="edit-btn" onclick="editprofile()">Edit Profile</button>
+            </div>
+
+            <hr>
+
+            <div id="profileView">
+            <div class="profile-details">
+
+                <div class="detail">
+                    <label>Recruiter Name</label>
+                    <p>{{ recruiter.recruiter_name or 'John Mathew' }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Email</label>
+                    <p>{{ recruiter.email }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Contact Number</label>
+                    <p>{{ recruiter.contact or '+91 9876543210' }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Industry Type</label>
+                    <p>{{ recruiter.industry or 'Information Technology' }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Location</label>
+                    <p>{{ recruiter.location or 'Kochi, Kerala' }}</p>
+                </div>
+
+                <div class="detail full-width">
+                    <label>Company Description</label>
+
+                    <p>
+                        ABC Technologies Pvt Ltd is a leading software
+                        development company specializing in web applications,
+                        mobile applications, cloud solutions, and enterprise
+                        software services.
+                    </p>
+                </div>
+
+            </div>
+            </div>
+            <div id="editForm" style="display:none;">
+
+                <form action="/update-recruiter-profile" method="POST" enctype="multipart/form-data">
+
+                    <label>Company Profile Photo</label><br>
+                    <input type="file" name="profile_photo"><br><br>
+
+                    <label>Company Name</label><br>
+                    <input type="text" name="company_name" id="companyName" value="{{ recruiter.company_name or 'ABC Technologies Pvt Ltd' }}"><br><br>
+
+                    <label>Recruiter Name</label><br>
+                    <input type="text" name="recruiter_name" id="recruiterName" value="{{ recruiter.recruiter_name or 'John Mathew' }}"><br><br>
+
+                    <label>Email</label><br>
+                    <input type="email" id="email" value="{{ recruiter.email }}" readonly><br><br>
+
+                    <label>Contact Number</label><br>
+                    <input type="text" name="contact" id="contact" value="{{ recruiter.contact or '+91 9876543210' }}"><br><br>
+
+                    <label>Industry Type</label><br>
+                    <input type="text" name="industry" id="industry" value="{{ recruiter.industry or 'Information Technology' }}"><br><br>
+
+                    <label>Location</label><br>
+                    <input type="text" name="location" id="location" value="{{ recruiter.location or 'Kochi, Kerala' }}"><br><br>
+
+                    <label>Company Description</label><br>
+                    <textarea rows="5" name="description" id="description">{{ recruiter.description or 'ABC Technologies Pvt Ltd is a leading software development company.' }}</textarea><br><br>
+
+                    <div class="form-buttons">
+                        <button type="submit">Save Changes</button>
+
+                        <button type="button" onclick="cancelEdit()">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='javascript.js') }}"></script>
+</body>
+</html>
