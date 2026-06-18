@@ -8,44 +8,57 @@
 
 </head>
 <body>
-   <div class="sidebar">
+    <div class="navbar">
+    <h1>Admin Dashboard</h1>
 
-    <h2>Admin Panel</h2>
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
 
-    <a href="/admin_dashboard">Dashboard</a>
-    <a href="/admin_students">Students</a>
-    <a href="/admin_recruiters">Recruiters</a>
-    <a href="/admin_analytics">Analytics</a>
-    <a href="/admin_reports">Reports</a>
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/admin_dashboard">Dashboard</a></li>
+                <li><a href="/admin_students">Students</a></li>
+                <li class="active"><a href="/admin_recruiters">Recruiters</a></li>
+                <li><a href="/admin_analytics">Analytics</a></li>
+                <li><a href="/admin_reports">Reports</a></li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
 
-</div>
+        </div>
 
-<div class="content">
+        <div class="content">
 
-    <h1>Recruiter Management</h1>
+            <h1>Recruiter Management</h1>
 
-    <table>
-    <tr>
-        <th>Company</th>
-        <th>Industry</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
+            <table>
+            <tr>
+                <th>Company</th>
+                <th>Industry</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
 
-    {% for r in recruiters %}
-    <tr>
-        <td>{{ r.company }}</td>
-        <td>{{ r.name }}</td>
-        <td id="status{{ r.id }}">{{ r.status }}</td>
-        <td>
-            <button onclick="approve('status{{ r.id }}')">Approve</button>
-            <button onclick="suspend('status{{ r.id }}')">Suspend</button>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+            {% for r in recruiters %}
+            <tr>
+                <td>{{ r.company }}</td>
+                <td>{{ r.name }}</td>
+                <td id="status{{ r.id }}">{{ r.status }}</td>
+                <td>
+                    <button onclick="approve('status{{ r.id }}')">Approve</button>
+                    <button onclick="suspend('status{{ r.id }}')">Suspend</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
 
-</div>
+        </div>
+    </div>
 
 <script src="{{url_for('static',filename='admin_javascript.js')}}"></script>
 </body>
