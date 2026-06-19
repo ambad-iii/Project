@@ -24,14 +24,15 @@ body{
     color:white;
 }
 
-.logo{
+.logo {
     font-family: "Georgia", serif;
-    font-size: 44px;
-    font-weight: bold;
+    font-size: 44px; 
+    font-weight: 700;
     color: white;
     letter-spacing: 2px;
-    text-shadow: 0 2px 15px rgba(255,255,255,0.2);
     margin: 0;
+    line-height: 1;
+    text-shadow: 0 2px 15px rgba(255,255,255,0.2);
 }
 
 .navbar h1{
