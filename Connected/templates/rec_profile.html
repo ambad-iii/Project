@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recruiter Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='rec_style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2 class="logo">CareerBridge</h2>
+
+    <div class="navbar-right">
+        <span>Welcome, Recruiter</span>
+        <button onclick="confirmLogout()" class="log-out">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/rec_dashboard">Dashboard</a></li>
+            <li class="active"><a href="/rec_profile">Profile</a></li>
+            <li><a href="/rec_post_job">Post Job</a></li>
+            <li><a href="/rec_jobs">Posted Jobs</a></li>
+            <li><a href="/rec_applicants">Applicants</a></li>
+            <li onclick="confirmLogout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <div class="section profile-card">
+
+            <div class="profile-header">
+                <img src="{{ url_for('uploaded_file', filename=recruiter.photo_path) if recruiter.photo_path else url_for('static', filename='company.jpg') }}" alt="Company Profile" class="profile-photo">
+
+                <div>
+                    <h2>{{ recruiter.company_name if recruiter and recruiter.company_name else '' }}</h2>
+                    <p>{{ recruiter.description if recruiter and recruiter.description else '' }}</p>
+                </div>
+
+                <button class="edit-btn" onclick="editprofile()">Edit Profile</button>
+            </div>
+
+            <hr>
+
+            <div id="profileView">
+            <div class="profile-details">
+
+                <div class="detail">
+                    <label>Recruiter Name</label>
+                    <p>{{ recruiter.recruiter_name or user.name}}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Email</label>
+                    <p>{{ user.email }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Contact Number</label>
+                    <p>{{ recruiter.contact or '' }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Industry Type</label>
+                    <p>{{ recruiter.industry or '' }}</p>
+                </div>
+
+                <div class="detail">
+                    <label>Location</label>
+                    <p>{{ recruiter.location or '' }}</p>
+                </div>
+
+                <div class="detail full-width">
+                    <label>Company Description</label>
+
+                    <p>{{ recruiter.description or '' }}</p>
+                </div>
+
+            </div>
+            </div>
+            <div id="editForm" style="display:none;">
+
+                <form action="/update-recruiter-profile" method="POST" enctype="multipart/form-data">
+
+                    <label>Company Profile Photo</label><br>
+                    <input type="file" name="profile_photo"><br><br>
+
+                    <label>Company Name</label><br>
+                    <input type="text" name="company_name" id="companyName" value="{{ recruiter.company_name or '' }}"><br><br>
+
+                    <label>Recruiter Name</label><br>
+                    <input type="text" name="recruiter_name" id="recruiterName"
+                    value="{{ recruiter.recruiter_name or user.name }}"><br><br>
+
+                    <label>Email</label><br>
+                    <input type="email" id="email" value="{{ user.email }}" readonly><br><br>
+
+                    <label>Contact Number</label><br>
+                    <input type="text" name="contact" id="contact" value="{{ recruiter.contact or '' }}"><br><br>
+
+                    <label>Industry Type</label><br>
+                    <input type="text" name="industry" id="industry" value="{{ recruiter.industry or '' }}"><br><br>
+
+                    <label>Location</label><br>
+                    <input type="text" name="location" id="location" value="{{ recruiter.location or '' }}"><br><br>
+
+                    <label>Company Description</label><br>
+                    <textarea rows="5" name="description" id="description">{{ recruiter.description or '' }}</textarea><br><br>
+
+                    <div class="form-buttons">
+                        <button type="submit">Save Changes</button>
+
+                        <button type="button" onclick="cancelEdit()">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='rec_javascript.js') }}"></script>
+</body>
+</html>

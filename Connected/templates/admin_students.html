@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='admin_style.css')}}">
+
+</head>
+<body>
+    <div class="navbar">
+    <h1 class="logo">CareerBridge</h1>
+
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
+
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/admin_dashboard">Dashboard</a></li>
+                <li class="active"><a href="/admin_students">Students</a></li>
+                <li><a href="/admin_recruiters">Recruiters</a></li>
+                <li><a href="/admin_reports">Reports</a></li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
+
+        </div>
+
+        <div class="content">
+
+            <h1>Student Management</h1>
+
+            <table>
+                <tr>
+                    <th>Roll NO</th>
+                    <th>NAME</th>
+                    <th>DEPARTMENT</th>
+                    <th>CGPA</th>
+                    <th>STATUS</th>
+                </tr>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.roll_no }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.department }}</td>
+                    <td>{{ student.cgpa }}</td>
+                    <td>{{ student.status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+<script src="{{ url_for('static', filename='admin_javascript.js') }}"></script>
+</body>
+</html>

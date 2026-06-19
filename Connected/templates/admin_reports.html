@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='admin_style.css')}}">
+
+</head>
+<body>
+    <div class="navbar">
+    <h1 class="logo">CareerBridge</h1>
+
+        <div class="navbar-right">
+            <h3>Welcome, Admin</h3>
+
+            <a href="/logout">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/admin_dashboard">Dashboard</a></li>
+                <li><a href="/admin_students">Students</a></li>
+                <li><a href="/admin_recruiters">Recruiters</a></li>
+                <li class="active"><a href="/admin_reports">Reports</a></li>
+                <li onclick="confirmLogout()">Logout</li>
+            </ul>
+
+        </div>
+
+        <div class="content">
+
+            <h1>Placement Reports</h1>
+
+            <table>
+
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+
+                <tr>
+                    <td>Total Students</td>
+                    <td>{{ students_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Total Recruiters</td>
+                    <td>{{ recruiters_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Total Jobs Posted</td>
+                    <td>{{ jobs_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Total Applications</td>
+                    <td>{{ applications_count }}</td>
+                </tr>
+
+                <tr>
+                    <td>Placement Rate</td>
+                    <td>39.8%</td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+<script src="{{url_for('static',filename='admin_javascript.js')}}"></script>
+
+</body>
+</html>
