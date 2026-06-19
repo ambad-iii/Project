@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posted Jobs</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='rec_style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <h2 class="logo">CareerBridge</h2>
+    <div class="navbar-right">
+        <span>Welcome, Recruiter</span>
+        <button onclick="confirmLogout()" class="log-out">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="/rec_dashboard">Dashboard</a></li>
+            <li><a href="/rec_profile">Profile</a></li>
+            <li><a href="/rec_post_job">Post Job</a></li>
+            <li class="active"><a href="/rec_jobs">Posted Jobs</a></li>
+            <li><a href="/rec_applicants">Applicants</a></li>
+            <li onclick="confirmLogout()">Logout</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <div class="section">
+            <h2>Posted Jobs</h2>
+
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Eligibility</th>
+                    <th>Salary</th>
+                    <th>Applicants</th>
+                    <th>Posted Date</th>
+                    <th>Last Date</th>
+                </tr>
+
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ job.role }}</td>
+                    <td>{{ job.eligibility }}</td>
+                    <td>{{ job.package }}</td>
+                    <td>{{ job.applicants_count }}</td>
+                    <td>{{ job.posted_date }}</td>
+                    <td>{{ job.last_date }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='rec_javascript.js') }}"></script>
+</body>
+</html>

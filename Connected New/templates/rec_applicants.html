@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Applicants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='rec_style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2 class="logo">CareerBridge</h2>
+
+    <div class="navbar-right">
+        <span>Welcome, Recruiter</span>
+        <button onclick="confirmLogout()" class="log-out">Logout</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="/rec_dashboard">Dashboard</a></li>
+            <li><a href="/rec_profile">Profile</a></li>
+            <li><a href="/rec_post_job">Post Job</a></li>
+            <li><a href="/rec_jobs">Posted Jobs</a></li>
+            <li class="active"><a href="/rec_applicants">Applicants</a></li>
+            <li onclick="confirmLogout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <div class="section">
+            <h2>Applicants</h2>
+            <br>
+
+            <table>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Resume</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for a in applicants %}
+                <tr>
+                    <td>{{ a.student_name or a.student_email }}</td>
+                    <td>{{ a.student_email }}</td>
+                    <td>{{ a.role }}</td>
+                    <td>
+                        {% if a.resume_filename %}
+                            <a href="{{ url_for('uploaded_file', filename=a.resume_filename) }}" target="_blank" download>View Resume</a>
+                        {% else %}
+                            No resume
+                        {% endif %}
+                    </td>
+                    <td>{{ a.status }}</td>
+                    <td>
+                        <form method="POST" action="/update_application_status">
+                            <input type="hidden" name="id" value="{{ a.id }}">
+
+                            <select name="status">
+                                <option>Pending</option>
+                                <option>Shortlisted</option>
+                                <option>Selected</option>
+                                <option>Rejected</option>
+                            </select>
+
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='rec_javascript.js') }}"></script>
+
+</body>
+</html>
